@@ -1,4 +1,4 @@
-class AuthenticateUser < BaseService
+class AuthenticateUser < Services::BaseService
   def initialize(email, password)
     @email = email
     @password = password
