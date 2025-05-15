@@ -1,11 +1,13 @@
-class BaseService
-  Response = Struct.new(:data, :error) do
-    def success?
-      error.nil?
+module Services
+  class BaseService
+    Response = Struct.new(:data, :error) do
+      def success?
+        error.nil?
+      end
     end
-  end
 
-  def self.call(...)
-    new(...).call
+    def self.call(...)
+      new(...).call
+    end
   end
 end
