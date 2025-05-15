@@ -74,6 +74,7 @@ GEM
       uri (>= 0.13.1)
     ast (2.4.3)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
     bcrypt_pbkdf (1.1.1-arm64-darwin)
     bcrypt_pbkdf (1.1.1-x86_64-darwin)
@@ -91,12 +92,18 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    diff-lcs (1.6.2)
     dotenv (3.1.8)
     drb (2.2.1)
     ed25519 (1.4.0)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    factory_bot (6.5.1)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.4.4)
+      factory_bot (~> 6.5)
+      railties (>= 5.0.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -110,6 +117,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.12.0)
+    jwt (2.10.1)
+      base64
     kamal (2.6.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -227,6 +236,23 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
+    rspec-core (3.13.3)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (8.0.0)
+      actionpack (>= 7.2)
+      activesupport (>= 7.2)
+      railties (>= 7.2)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.3)
     rubocop (1.75.5)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -322,12 +348,16 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bcrypt
   bootsnap
   brakeman
   debug
+  factory_bot_rails
+  jwt
   kamal
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rspec-rails
   rubocop-rails-omakase
   solid_cable
   solid_cache
