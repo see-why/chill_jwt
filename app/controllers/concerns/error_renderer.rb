@@ -1,4 +1,4 @@
-class ErrorRenderer
+module ErrorRenderer
   extend ActiveSupport::Concern
 
   MESSAGE_BY_STATUS = {
@@ -8,9 +8,11 @@ class ErrorRenderer
     },
     not_found: {
       status_code: :not_found,
-      status: MESSAGE_BY_STATUS[status][:status_code]
+      payload: "NOT_FOUND"
     }
-  }
+  }.with_indifferent_access.freeze
+
+  private_constant :MESSAGE_BY_STATUS
 
   included do
     private
