@@ -2,8 +2,10 @@ module V1
   class SessionsController < ApplicationController
     skip_before_action :authorize_request, only: %i[create]
 
+    include Services
+
     def create
-      result = AuthenticateUser.call(trusted_params)
+      result = AuthenticateUser.call(**trusted_params)
 
       if result.success?
         render json: { token: result.data[:token] }, status: :ok
@@ -16,7 +18,7 @@ module V1
     private
 
     def trusted_params
-      params.expect(user: [ :email, :password ])
+      params.permit(:email, :password).to_h.symbolize_keys
     end
   end
 end
