@@ -1,4 +1,4 @@
-class AuthorizeRequest < Services::BaseService
+class AuthorizeRequest < BaseService
   def initialize(headers = {})
     @headers = headers
     super()
