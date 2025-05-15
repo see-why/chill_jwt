@@ -7,14 +7,14 @@ class AuthorizeRequest < BaseService
   def call
     return Response.new(nil, :unauthorized) unless decoded_auth_token
 
-    user = User.find(id: decoded_auth_token[:user_id])
+    user = User.find(decoded_auth_token[:user_id])
     user ? Response.new({ user: user }, nil) : Response.new(nil, :not_found)
   end
 
   private
 
   def decoded_auth_token
-    @decoded_auth_token ||= JsonWebTokenManager.decode(http_auth_token)
+    @decoded_auth_token ||= TokenManager::JsonWebTokenManager.decode(http_auth_token)
   end
 
   def http_auth_token
