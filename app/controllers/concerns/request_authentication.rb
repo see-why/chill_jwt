@@ -9,7 +9,7 @@ module RequestAuthentication
   private
 
   def authotise_request
-    response = AuthorizeRequest.call(request.headers)
+    response = Services::AuthorizeRequest.call(request.headers)
 
     if response.success?
       @current_user = response.data[:user]
