@@ -9,6 +9,7 @@ default: &default
   host: <%= ENV.fetch("DB_HOST") %>
   password: <%= ENV.fetch("DB_PASSWORD") %>
   username: postgres
+  port: 5432
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
@@ -23,7 +24,6 @@ development:
 test:
   <<: *default
   database: chill_jwt_test
-
 
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
